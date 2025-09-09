@@ -1,3 +1,3 @@
 export interface InstagramSharerPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  shareToStory(options: { imageBase64: string; appId: string }): Promise<void>;
 }
