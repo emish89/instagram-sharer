@@ -1,13 +1,28 @@
 import Foundation
 import Capacitor
 
-// Questo definisce il plugin, lo registra con Capacitor e contiene la nostra logica.
 @objc(InstagramSharer)
-public class InstagramSharer: CAPPlugin {
-    
-    // Questo è il metodo che chiamerai da React.
+public class InstagramSharer: CAPPlugin, CAPBridgedPlugin {
+    // Queste righe registrano esplicitamente il plugin e i suoi metodi con Capacitor
+    public let identifier = "InstagramSharer"
+    public let jsName = "InstagramSharer"
+    public let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "shareToStory", returnType: CAPPluginReturnPromise)
+    ]
+    // La logica di implementazione è in un'istanza separata, come da prassi moderna
+    private let implementation = InstagramSharerImpl()
+
     @objc func shareToStory(_ call: CAPPluginCall) {
-        // Estraiamo i dati passati da JavaScript
+        implementation.shareToStory(call)
+    }
+}
+
+
+// Mettiamo la nostra logica effettiva in una classe "Impl" per una maggiore pulizia
+// Questo previene problemi con l'inizializzazione del plugin
+@objc(InstagramSharerImpl)
+public class InstagramSharerImpl: NSObject {
+    @objc public func shareToStory(_ call: CAPPluginCall) {
         guard let base64String = call.getString("imageBase64") else {
             call.reject("Missing imageBase64 option")
             return
@@ -18,36 +33,32 @@ public class InstagramSharer: CAPPlugin {
             return
         }
         
-        // Convertiamo la stringa base64 in dati immagine
         guard let backgroundImage = Data(base64Encoded: base64String) else {
             call.reject("Failed to convert base64 to image data")
             return
         }
         
-        // Creiamo l'URL per aprire le Storie di Instagram
         let urlSchemeString = "instagram-stories://share?source_application=\(appId)"
         guard let urlScheme = URL(string: urlSchemeString) else {
             call.reject("Failed to create URL Scheme")
             return
         }
 
-        // Controlliamo se Instagram è installato
         if UIApplication.shared.canOpenURL(urlScheme) {
-            // Prepariamo i dati per la clipboard con la chiave personalizzata di Instagram
             let pasteboardItems = [["com.instagram.sharedSticker.backgroundImage": backgroundImage]]
             let pasteboardOptions: [UIPasteboard.OptionsKey: Any] = [
                 .expirationDate: Date().addingTimeInterval(60 * 5)
             ]
             
-            // Scriviamo sulla clipboard
             UIPasteboard.general.setItems(pasteboardItems, options: pasteboardOptions)
             
-            // Apriamo Instagram
-            UIApplication.shared.open(urlScheme, options: [:]) { (success) in
-                if success {
-                    call.resolve()
-                } else {
-                    call.reject("Failed to open Instagram")
+            DispatchQueue.main.async {
+                UIApplication.shared.open(urlScheme, options: [:]) { (success) in
+                    if success {
+                        call.resolve()
+                    } else {
+                        call.reject("Failed to open Instagram")
+                    }
                 }
             }
         } else {
