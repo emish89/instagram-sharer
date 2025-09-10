@@ -1,6 +1,6 @@
 {
-  "name": "instagram-sharer",
-  "version": "0.0.1",
+  "name": "@emish89/capacitor-instagram-sharer",
+  "version": "0.0.3",
   "description": "instagram share on story capacitor plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -11,9 +11,8 @@
     "android/build.gradle",
     "dist/",
     "ios/Sources",
-    "ios/Tests",
     "Package.swift",
-    "InstagramSharer.podspec"
+    "Emish89CapacitorInstagramSharer.podspec"
   ],
   "author": "emish89",
   "license": "MIT",
@@ -71,9 +70,11 @@
   },
   "capacitor": {
     "ios": {
+      "name": "InstagramSharer",
       "src": "ios"
     },
     "android": {
+      "name": "InstagramSharer",
       "src": "android"
     }
   }
