@@ -11,6 +11,25 @@ npm install @emish89/capacitor-instagram-sharer
 npx cap sync
 ```
 
+
+and put in the `Info.plist` file :
+
+```bash
+<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram</string>
+		<string>instagram-stories</string>
+	</array>
+```
+
+and in the `AndroidManifest.xml` : 
+
+```bash
+<queries>
+        <package android:name="com.instagram.android" />
+    </queries>
+```
+                
 ## Sample Usage 
 
 ```js
