@@ -1,5 +1,5 @@
 {
-  "name": "@emish89/capacitor-instagram-sharer",
+  "name": "@emish89/instagram-sharer",
   "version": "0.0.5",
   "description": "instagram share on story capacitor plugin",
   "main": "dist/plugin.cjs.js",
@@ -18,10 +18,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emish89/capacitor-instagram-sharer.git"
+    "url": "git+https://github.com/emish89/instagram-sharer.git"
   },
   "bugs": {
-    "url": "https://github.com/emish89/capacitor-instagram-sharer/issues"
+    "url": "https://github.com/emish89/instagram-sharer/issues"
   },
   "keywords": [
     "capacitor",
