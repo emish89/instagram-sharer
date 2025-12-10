@@ -17,7 +17,6 @@ public class InstagramSharer: CAPPlugin, CAPBridgedPlugin {
     }
 }
 
-
 // Mettiamo la nostra logica effettiva in una classe "Impl" per una maggiore pulizia
 // Questo previene problemi con l'inizializzazione del plugin
 @objc(InstagramSharerImpl)
@@ -27,17 +26,17 @@ public class InstagramSharerImpl: NSObject {
             call.reject("Missing imageBase64 option")
             return
         }
-        
+
         guard let appId = call.getString("appId") else {
             call.reject("Missing appId option")
             return
         }
-        
+
         guard let backgroundImage = Data(base64Encoded: base64String) else {
             call.reject("Failed to convert base64 to image data")
             return
         }
-        
+
         let urlSchemeString = "instagram-stories://share?source_application=\(appId)"
         guard let urlScheme = URL(string: urlSchemeString) else {
             call.reject("Failed to create URL Scheme")
@@ -49,9 +48,9 @@ public class InstagramSharerImpl: NSObject {
             let pasteboardOptions: [UIPasteboard.OptionsKey: Any] = [
                 .expirationDate: Date().addingTimeInterval(60 * 5)
             ]
-            
+
             UIPasteboard.general.setItems(pasteboardItems, options: pasteboardOptions)
-            
+
             DispatchQueue.main.async {
                 UIApplication.shared.open(urlScheme, options: [:]) { (success) in
                     if success {
