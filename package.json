@@ -1,7 +1,7 @@
 {
   "name": "@emish89/instagram-sharer",
-  "version": "0.0.5",
-  "description": "instagram share on story capacitor plugin",
+  "version": "1.0.0",
+  "description": "Share an image as Instagram story - Capacitor Plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -25,6 +25,9 @@
   },
   "keywords": [
     "capacitor",
+    "instagram",
+    "share",
+    "story",
     "plugin",
     "native"
   ],
@@ -56,7 +59,7 @@
     "prettier": "^3.7.4",
     "prettier-plugin-java": "^2.7.7",
     "rimraf": "^6.1.2",
-    "rollup": "^4.53.3",
+    "rollup": "^4.53.5",
     "swiftlint": "^2.0.0",
     "typescript": "^5.9.3"
   },

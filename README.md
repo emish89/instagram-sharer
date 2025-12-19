@@ -42,7 +42,7 @@ await InstagramSharer.shareToStory({
 
 <docgen-index>
 
-- [`shareToStory(...)`](#sharetostory)
+* [`shareToStory(...)`](#sharetostory)
 
 </docgen-index>
 
@@ -59,9 +59,25 @@ shareToStory(options: { imageBase64: string; appId: string; }) => Promise<void>
 | ------------- | ---------------------------------------------------- |
 | **`options`** | <code>{ imageBase64: string; appId: string; }</code> |
 
----
+--------------------
 
 </docgen-api>
+
+## Build in local
+
+run this to set the env variables
+
+```bash
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
+```
+
+then run the build or publish
+
+```bash
+npm run verify
+```
 
 ## Publishing
 
