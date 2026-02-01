@@ -2,11 +2,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "InstagramSharer",
+    name: "Emish89InstagramSharer", 
     platforms: [.iOS(.v15)],
     products: [
         .library(
-            name: "InstagramSharer",
+            name: "Emish89InstagramSharer", 
             targets: ["InstagramSharerPlugin"])
     ],
     dependencies: [

@@ -1,6 +1,6 @@
 {
   "name": "@emish89/instagram-sharer",
-  "version": "1.0.0",
+  "version": "8.0.3",
   "description": "Share an image as Instagram story - Capacitor Plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -33,7 +33,7 @@
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
-    "verify:ios": "xcodebuild -scheme InstagramSharer -destination generic/platform=iOS",
+    "verify:ios": "xcodebuild -scheme Emish89InstagramSharer -destination generic/platform=iOS",
     "verify:android": "cd android && ./gradlew clean build test && cd ..",
     "verify:web": "npm run build",
     "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
@@ -48,23 +48,23 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^8.0.0",
-    "@capacitor/core": "^8.0.0",
+    "@capacitor/android": "^8.0.2",
+    "@capacitor/core": "^8.0.2",
     "@capacitor/docgen": "^0.3.1",
-    "@capacitor/ios": "^8.0.0",
+    "@capacitor/ios": "^8.0.2",
     "@ionic/eslint-config": "^0.4.0",
     "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^2.0.0",
     "eslint": "^8.57.1",
-    "prettier": "^3.7.4",
-    "prettier-plugin-java": "^2.7.7",
+    "prettier": "^3.8.1",
+    "prettier-plugin-java": "^2.8.1",
     "rimraf": "^6.1.2",
-    "rollup": "^4.53.5",
+    "rollup": "^4.57.1",
     "swiftlint": "^2.0.0",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "@capacitor/core": ">=8.0.0"
+    "@capacitor/core": ">=8.0.2"
   },
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
