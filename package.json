@@ -1,6 +1,6 @@
 {
   "name": "@emish89/instagram-sharer",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "description": "Share an image as Instagram story - Capacitor Plugin",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -12,7 +12,7 @@
     "dist/",
     "ios/Sources",
     "Package.swift",
-    "Emish89CapacitorInstagramSharer.podspec"
+    "Emish89InstagramSharer.podspec"
   ],
   "author": "emish89",
   "license": "MIT",
